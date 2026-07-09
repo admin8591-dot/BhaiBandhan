@@ -2,30 +2,21 @@
    BhaiBandhan — Premium Footer Widget (bb-footer.js)
    ---------------------------------------------------------------------
    HOW TO USE:
-   1. Upload this file to your GitHub repo (same repo as your site,
-      e.g. alongside index.html).
+   1. Upload this file to your GitHub repo (same repo as your site).
    2. In your already-deployed index.html, add ONE line right before
       the closing </body> tag:
 
         <script src="bb-footer.js"></script>
 
-      (or, if hosted on GitHub Pages, the relative path works directly
-      since it's in the same repo — e.g. <script src="/bb-footer.js">)
+   3. Done — this injects the gallery strip, footer, and the exact
+      Privacy/Terms/Return/Contact popups (matching your screenshots)
+      at the bottom of the page. Nothing in index.html needs to change.
 
-   3. That's it — this script injects the "making of" gallery strip,
-      the BhaiBandhan footer, and the Privacy/Terms/Return/Contact
-      popups at the bottom of the page automatically. Nothing in your
-      existing index.html needs to change.
-
-   NOTE: This footer's text is static (hardcoded here), not pulled from
-   the admin panel's Site Text sheet — matches your request to keep
-   this section looking premium rather than plain edit-box text. If you
-   want to change any wording, edit the CONTENT object below directly.
+   To edit any wording, edit the CONTENT object below directly.
    ===================================================================== */
 
 (function(){
 
-  /* ---------- EDIT THIS CONTENT DIRECTLY IF NEEDED ---------- */
   const CONTENT = {
     galleryImages: [
       "https://i.ibb.co/Ps134VsP/20250727-222035-1.jpg",
@@ -36,46 +27,74 @@
       "https://i.ibb.co/nsW2tXrv/20250728-235659-1.jpg"
     ],
     phone: "+91 76080 53740",
+    whatsappNumber: "917608053740",
+    email: "costumegiftskart@gmail.com",
     location: "Balasore, Odisha, India",
     deliveryLine: "📦 Free delivery on orders above ₹299 · Delivery in 5–7 days",
 
-    privacy: `
-      <p><b>What we collect:</b> Name, phone number, delivery address, and order details — only what's needed to process and deliver your order.</p>
-      <p><b>How we use it:</b> Solely for order fulfilment, delivery coordination, and customer support over WhatsApp. We never sell or share your data with third parties.</p>
-      <p><b>Storage:</b> Your order details are stored securely and retained only as long as needed for order history and support.</p>
-    `,
+    privacy: {
+      icon: "🔒",
+      tag: "Last updated: June 2025",
+      body: `
+        <p>BhaiBandhan is committed to protecting your privacy.</p>
+        <h4>Information We Collect</h4>
+        <p>When you place an order, we collect only your name, mobile number, WhatsApp number, and delivery address. We do not store any payment details.</p>
+        <h4>How We Use It</h4>
+        <p>Your information is used solely to process your order and contact you on WhatsApp for delivery updates.</p>
+        <h4>Data Sharing</h4>
+        <p>We do not sell, share, or trade your personal information with any third party under any circumstances.</p>
+        <h4>Contact</h4>
+        <p>For privacy concerns, email us at <b>costumegiftskart@gmail.com</b></p>
+      `
+    },
 
-    terms: `
-      <div class="bbf-tag">Last updated: June 2025</div>
-      <p>By placing an order on BhaiBandhan, you agree to the following terms.</p>
-      <h4>Pricing</h4>
-      <p>All prices are in Indian Rupees (₹) inclusive of applicable taxes. Prices may change without prior notice.</p>
-      <h4>Orders</h4>
-      <ul>
-        <li>Orders cannot be cancelled after 12 hours of confirmation.</li>
-        <li>Product colors may slightly vary from images due to screen differences.</li>
-        <li>Delivery takes 5–10 working days across India.</li>
-      </ul>
-      <h4>Handmade Nature</h4>
-      <p>All our rakhis are handcrafted individually. Minor variations in size, color, or finish are part of the handmade character and are not defects.</p>
-      <h4>Liability</h4>
-      <p>We are not responsible for delivery delays caused by courier partners or unforeseen events.</p>
-    `,
+    terms: {
+      icon: "📋",
+      tag: "Last updated: June 2025",
+      body: `
+        <p>By placing an order on BhaiBandhan, you agree to the following terms.</p>
+        <h4>Pricing</h4>
+        <p>All prices are in Indian Rupees (₹) inclusive of applicable taxes. Prices may change without prior notice.</p>
+        <h4>Orders</h4>
+        <ul>
+          <li>Orders cannot be cancelled after 12 hours of confirmation.</li>
+          <li>Product colors may slightly vary from images due to screen differences.</li>
+          <li>Delivery takes 5–10 working days across India.</li>
+        </ul>
+        <h4>Handmade Nature</h4>
+        <p>All our rakhis are handcrafted individually. Minor variations in size, color, or finish are part of the handmade character and are not defects.</p>
+        <h4>Liability</h4>
+        <p>We are not responsible for delivery delays caused by courier partners or unforeseen events.</p>
+      `
+    },
 
-    returns: `
-      <p><b>Replacement window:</b> Damaged, defective, or wrong items can be replaced within 3 days of delivery.</p>
-      <p><b>How to claim:</b> Message us on WhatsApp with your order ID and a clear photo of the item received.</p>
-      <p><b>Not eligible:</b> Minor handmade variations in color/size are not considered defects. Change-of-mind returns are not accepted since each rakhi is made to order.</p>
-    `,
+    returns: {
+      icon: "🔄",
+      tag: "Handmade — No Return / No Exchange",
+      body: `
+        <p>Every rakhi at BhaiBandhan is <b>handcrafted individually and made fresh for your order.</b> It is a one-time creation — not a factory product.</p>
+        <h4>Why No Returns?</h4>
+        <ul>
+          <li>Each rakhi is made specifically for your order from scratch.</li>
+          <li>Handmaking involves dedicated time, skill, and raw materials that cannot be recovered.</li>
+          <li>Once crafted and dispatched, the product cannot be reused or offered to anyone else.</li>
+          <li>Just like a painting made for you — it belongs only to you.</li>
+        </ul>
+        <h4>Our Quality Promise</h4>
+        <ul>
+          <li>We pack every order carefully for safe delivery.</li>
+          <li>Product quality matches what is shown in photos.</li>
+          <li>Every piece is inspected before dispatch.</li>
+        </ul>
+        <h4>Important</h4>
+        <p>Please review product images and description carefully before ordering. Once confirmed, orders <b>cannot be cancelled, returned, or exchanged.</b></p>
+      `
+    },
 
-    contact: `
-      <p>📞 <b>Phone / WhatsApp:</b> +91 76080 53740</p>
-      <p>📍 <b>Location:</b> Balasore, Odisha, India</p>
-      <p>We usually respond within a few hours. For fastest support, message us directly on WhatsApp with your order ID.</p>
-    `
+    contact: { icon: "📞" } // rendered specially below (buttons), not plain body
   };
 
-  /* ---------- STYLES (scoped with bbf- prefix to avoid clashing) ---------- */
+  /* ---------- STYLES ---------- */
   const css = `
     .bbf-wrap{background:#fdf6f0;padding:24px 16px 10px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto}
     .bbf-badge{display:inline-block;background:#fff;border:1px solid rgba(139,26,26,.2);color:#8B1A1A;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;margin-bottom:14px}
@@ -83,7 +102,7 @@
     .bbf-sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:18px}
     .bbf-gal{overflow:hidden;border-radius:14px;margin-bottom:10px}
     .bbf-gal-track{display:flex;gap:8px;transition:transform .5s cubic-bezier(.25,.8,.25,1)}
-    .bbf-gal-track img{width:100%;flex-shrink:0;height:220px;object-fit:cover;border-radius:14px;scroll-snap-align:start}
+    .bbf-gal-track img{width:100%;flex-shrink:0;height:220px;object-fit:cover;border-radius:14px}
     .bbf-dots{display:flex;justify-content:center;gap:6px;margin:10px 0 22px}
     .bbf-dot{width:7px;height:7px;border-radius:50%;background:rgba(139,26,26,.25);cursor:pointer;transition:all .2s}
     .bbf-dot.on{background:#8B1A1A;width:20px;border-radius:4px}
@@ -99,17 +118,26 @@
 
     .bbf-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99996}
     .bbf-ov.on{display:block}
-    .bbf-pop{display:none;position:fixed;bottom:0;left:0;right:0;max-width:600px;margin:0 auto;background:#fffaf5;border-radius:20px 20px 0 0;z-index:99997;max-height:80vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
+    .bbf-pop{display:none;position:fixed;bottom:0;left:0;right:0;max-width:600px;margin:0 auto;background:#fffaf5;border-radius:20px 20px 0 0;z-index:99997;max-height:82vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
     .bbf-pop.on{display:block;transform:translateY(0)}
     .bbf-pop-hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 18px 14px;border-bottom:1px solid rgba(0,0,0,.08)}
-    .bbf-pop-hdr h3{color:#8B1A1A;font-size:17px}
-    .bbf-pop-cls{width:30px;height:30px;background:rgba(139,26,26,.1);border:none;border-radius:50%;color:#8B1A1A;font-size:14px;cursor:pointer}
+    .bbf-pop-hdr h3{color:#8B1A1A;font-size:17px;display:flex;align-items:center;gap:8px}
+    .bbf-pop-cls{width:30px;height:30px;background:rgba(139,26,26,.1);border:none;border-radius:50%;color:#8B1A1A;font-size:14px;cursor:pointer;flex-shrink:0}
     .bbf-pop-body{padding:18px}
-    .bbf-pop-body p{font-size:13px;color:#444;line-height:1.7;margin-bottom:10px}
-    .bbf-pop-body h4{font-size:13.5px;color:#8B1A1A;margin:14px 0 6px}
+    .bbf-pop-body p{font-size:14px;color:#222;line-height:1.7;margin-bottom:10px}
+    .bbf-pop-body h4{font-size:14.5px;color:#8B1A1A;margin:14px 0 6px}
     .bbf-pop-body ul{padding-left:18px;margin-bottom:10px}
-    .bbf-pop-body li{font-size:13px;color:#444;line-height:1.7;margin-bottom:4px}
-    .bbf-tag{display:inline-block;background:rgba(139,26,26,.08);border:1px solid rgba(139,26,26,.2);color:#8B1A1A;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+    .bbf-pop-body li{font-size:14px;color:#222;line-height:1.7;margin-bottom:6px}
+    .bbf-tag{display:inline-block;background:rgba(139,26,26,.08);border:1px solid rgba(139,26,26,.2);color:#8B1A1A;font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+
+    .bbf-cbtn{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;margin-bottom:12px;text-decoration:none;color:#fff;cursor:pointer}
+    .bbf-cbtn .ic{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+    .bbf-cbtn b{font-size:14.5px;display:block}
+    .bbf-cbtn span{font-size:12.5px;opacity:.95}
+    .bbf-cbtn.wa{background:linear-gradient(135deg,#25D366,#128C4A)}
+    .bbf-cbtn.mail{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+    .bbf-infobox{background:rgba(139,26,26,.06);border-radius:12px;padding:14px 16px}
+    .bbf-infobox div{font-size:13.5px;color:#333;padding:6px 0;display:flex;gap:8px}
   `;
 
   const styleEl = document.createElement('style');
@@ -164,7 +192,7 @@
   let idx = 0;
   function goTo(i){
     idx = i;
-    const imgWidth = track.children[0].getBoundingClientRect().width + 8; // + gap
+    const imgWidth = track.children[0].getBoundingClientRect().width + 8;
     track.style.transform = `translateX(-${idx * imgWidth}px)`;
     dots.forEach((d,di)=> d.classList.toggle('on', di===idx));
   }
@@ -178,11 +206,35 @@
   const popTitle = document.getElementById('bbfPopTitle');
   const popBody = document.getElementById('bbfPopBody');
 
+  function renderContactBody(){
+    return `
+      <p>We are happy to help! Tap below to reach us. We respond within 24 hours.</p>
+      <a class="bbf-cbtn wa" href="https://wa.me/${CONTENT.whatsappNumber}" target="_blank">
+        <div class="ic">📱</div>
+        <div><b>Chat on WhatsApp</b><span>${CONTENT.phone}</span></div>
+      </a>
+      <a class="bbf-cbtn mail" href="mailto:${CONTENT.email}">
+        <div class="ic">✉️</div>
+        <div><b>Send an Email</b><span>${CONTENT.email}</span></div>
+      </a>
+      <div class="bbf-infobox">
+        <div>📍 <b>Location:</b>&nbsp;${CONTENT.location}</div>
+        <div>🕐 <b>Hours:</b>&nbsp;Mon–Sat, 10 AM – 7 PM</div>
+        <div>⚡ <b>Response:</b>&nbsp;Within 24 hours</div>
+      </div>
+    `;
+  }
+
   document.querySelectorAll('[data-modal]').forEach(link => {
     link.addEventListener('click', () => {
       const key = link.dataset.modal;
-      popTitle.textContent = TITLES[key];
-      popBody.innerHTML = CONTENT[key];
+      const c = CONTENT[key];
+      popTitle.innerHTML = `${c.icon} ${TITLES[key]}`;
+      if(key === 'contact'){
+        popBody.innerHTML = renderContactBody();
+      } else {
+        popBody.innerHTML = `<div class="bbf-tag">${c.tag}</div>${c.body}`;
+      }
       ov.classList.add('on');
       pop.classList.add('on');
     });
