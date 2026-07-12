@@ -1,0 +1,47 @@
+<!-- ============================================================
+     splash-screen.html
+     Covers the "Loading products" gap with a branded splash animation.
+     This file has 3 sections. Copy each one into your index.html
+     at the exact spot marked below. Do NOT upload this file itself —
+     it's just a holder for the 3 snippets.
+     ============================================================ -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1 — PASTE THIS RIGHT AFTER YOUR <body> TAG
+     (as the very first thing inside <body>, before anything else)
+     ══════════════════════════════════════════════════════════ -->
+
+<div id="splash" style="position:fixed;inset:0;z-index:99999;background:#fdf6f0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s ease">
+  <div style="font-size:60px;animation:bounce 1s ease infinite">🪢</div>
+  <div style="margin-top:14px;font-size:20px;font-weight:900;color:#8B1A1A">BhaiBandhan</div>
+  <div style="margin-top:16px;width:36px;height:36px;border:4px solid rgba(139,26,26,.15);border-top-color:#8B1A1A;border-radius:50%;animation:spin .8s linear infinite"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2 — PASTE THIS INSIDE YOUR EXISTING <style> BLOCK
+     (anywhere between <style> and </style>, e.g. right at the top)
+     ══════════════════════════════════════════════════════════ -->
+
+<style>
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3 — PASTE THIS RIGHT BEFORE YOUR CLOSING </body> TAG
+     (as the very last thing before </body>)
+     ══════════════════════════════════════════════════════════ -->
+
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    const s = document.getElementById('splash');
+    if(!s) return;
+    s.style.opacity = '0';
+    setTimeout(() => s.remove(), 500);
+  }, 800); // minimum splash time in ms — raise to 1200-1500 if products still aren't ready by 800ms
+});
+</script>
