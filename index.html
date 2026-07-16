@@ -22,7 +22,9 @@ body{background:#fdf6f0;font-family:'Segoe UI',Arial,sans-serif;color:#1a0408}
 
 
 
-
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#8B1E1E">
+<link rel="apple-touch-icon" href="/launchericon-192x192.png">
 
 
   
@@ -806,5 +808,16 @@ init();
 <script src="bb-swipe.js"></script>
   <script src="splash-inject.js"></script>
   <script src="coupon.js"></script>
+
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch(err => console.log(err));
+  });
+}
+  </script>
+  
 </body>
 </html>
