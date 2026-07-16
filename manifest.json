@@ -1,0 +1,23 @@
+{
+  "name": "BhaiBandhan - Handmade Rakhis",
+  "short_name": "BhaiBandhan",
+  "description": "Handmade & Personalized Rakhi Store",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F2",
+  "theme_color": "#8B1E1E",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/launchericon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/launchericon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
