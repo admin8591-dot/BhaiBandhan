@@ -70,6 +70,15 @@ body{background:#fdf6f0;font-family:'Segoe UI',Arial,sans-serif;color:#1a0408}
 .vb{margin-top:auto;width:100%;padding:8px;background:linear-gradient(135deg,#8B1A1A,#6b1414);color:#fff;border:none;border-radius:8px;font-size:11.5px;font-weight:700;cursor:pointer}
 .vb:disabled{background:#ccc;cursor:not-allowed}
 
+/* ===== SKELETON LOADER ===== */
+.skel-card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;overflow:hidden}
+.skel{background:linear-gradient(90deg,#eee 25%,#f6f6f6 50%,#eee 75%);background-size:200% 100%;animation:skel-shimmer 1.4s infinite}
+@keyframes skel-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-img{width:100%;padding-top:100%;position:relative}
+.skel-line{height:12px;margin:10px 10px 0;border-radius:6px}
+.skel-line.short{width:60%}
+.skel-line.price{height:16px;width:40%;margin-top:8px;margin-bottom:10px}
+
 /* ===== PRODUCT MODAL ===== */
 .md{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9998;justify-content:center;align-items:center;padding:16px}
 .md.on{display:flex}
@@ -328,11 +337,12 @@ body{background:#fdf6f0;font-family:'Segoe UI',Arial,sans-serif;color:#1a0408}
   </div>
 </div>
 
+<script src="config.js"></script>
 <script>
 /* ================================================================
    DATA LAYER — live from your deployed Apps Script Web App
 ================================================================= */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNwG5ZJJVDAAI-Qi0Nsi79F5cZsKBbPWzXouxvsIOxc1b_UAtsvG-8EqUcaOk-2suNjg/exec";
+const SCRIPT_URL = window.BBF_SCRIPT_URL;
 
 let BANNERS = [];
 let CATEGORIES = ['All'];
@@ -426,6 +436,19 @@ function selectCategory(c){ activeCategory = c; renderCategories(); renderProduc
 
 function discountPercent(original, discount){
   return Math.round(((original - discount) / original) * 100);
+}
+
+function skeletonCardsHTML(count){
+  let out = '';
+  for(let i=0;i<count;i++){
+    out += `<div class="skel-card">
+      <div class="skel skel-img"></div>
+      <div class="skel skel-line"></div>
+      <div class="skel skel-line short"></div>
+      <div class="skel skel-line price"></div>
+    </div>`;
+  }
+  return out;
 }
 
 function renderProducts(){
@@ -789,7 +812,7 @@ function bbfInitPopups(){
    INIT
 ================================================================= */
 async function init(){
-  document.getElementById('PRODGRID').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:#999;font-size:13px">Loading products…</div>';
+  document.getElementById('PRODGRID').innerHTML = skeletonCardsHTML(6);
   const ok = await loadStoreData();
   if(!ok){
     document.getElementById('PRODGRID').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:#c00;font-size:13px">Could not load store data. Please check your connection and reload.</div>';
@@ -823,3 +846,4 @@ if ("serviceWorker" in navigator) {
   
 </body>
 </html>
+
