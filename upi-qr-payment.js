@@ -71,15 +71,15 @@
           <div style="border:1px solid #eee;border-radius:12px;overflow:hidden;text-align:left;margin-bottom:18px;">
             <button id="bbfGpayBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">Google Pay</span>
-              <span style="width:26px;height:26px;border-radius:7px;background:conic-gradient(from 90deg,#4285F4 0 25%,#EA4335 25% 50%,#FBBC05 50% 75%,#34A853 75% 100%);flex-shrink:0;"></span>
+              <img src="https://cdn.simpleicons.org/googlepay" alt="Google Pay" style="width:28px;height:28px;flex-shrink:0;">
             </button>
             <button id="bbfPhonepeBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">PhonePe</span>
-              <span style="width:26px;height:26px;border-radius:50%;background:#5f259f;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">Pe</span>
+              <img src="https://cdn.simpleicons.org/phonepe/5F259F" alt="PhonePe" style="width:28px;height:28px;flex-shrink:0;background:#fff;border-radius:6px;">
             </button>
             <button id="bbfPaytmBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">Paytm</span>
-              <span style="width:26px;height:26px;border-radius:7px;background:#00baf2;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">Pay</span>
+              <img src="https://cdn.simpleicons.org/paytm/00BAF2" alt="Paytm" style="width:28px;height:28px;flex-shrink:0;">
             </button>
           </div>
 
