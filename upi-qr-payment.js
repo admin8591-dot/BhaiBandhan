@@ -49,39 +49,44 @@
     wrap.id = 'bbfQrWrap';
     wrap.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(20,10,10,.65);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Segoe UI,Arial,sans-serif;backdrop-filter:blur(2px);';
     wrap.innerHTML = `
-      <div style="background:#fff;border-radius:20px;max-width:360px;width:100%;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35);position:relative;">
+      <div style="background:#fff;border-radius:18px;max-width:360px;width:100%;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35);position:relative;">
 
-        <button id="bbfQrClose" aria-label="Close" style="position:absolute;top:12px;right:12px;width:30px;height:30px;border:none;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-size:18px;line-height:1;cursor:pointer;z-index:2;">✕</button>
-
-        <div style="background:linear-gradient(135deg,#8B1A1A,#5e1010);padding:22px 20px 18px;text-align:center;">
-          <img src="${STORE_LOGO}" alt="${STORE_NAME}" style="width:44px;height:44px;border-radius:12px;object-fit:cover;margin-bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,.3);">
-          <div style="color:#fff;font-size:15px;font-weight:800;letter-spacing:.3px;">${STORE_NAME} Secure Pay</div>
-          <div style="color:rgba(255,255,255,.75);font-size:11px;margin-top:2px;">Powered by UPI</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 44px 14px 16px;background:linear-gradient(135deg,#8B1A1A,#5e1010);position:relative;">
+          <img src="${STORE_LOGO}" alt="${STORE_NAME}" style="width:36px;height:36px;border-radius:9px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.3);">
+          <div>
+            <div style="color:#fff;font-size:14px;font-weight:800;letter-spacing:.2px;line-height:1.2;">${STORE_NAME} Secure Pay</div>
+            <div style="color:rgba(255,255,255,.7);font-size:10.5px;margin-top:1px;">🔒 Powered by UPI · 100% Safe</div>
+          </div>
+          <button id="bbfQrClose" aria-label="Close" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border:none;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:15px;line-height:1;cursor:pointer;">✕</button>
         </div>
 
-        <div style="padding:22px 22px 24px;text-align:center;">
-          <p style="margin:0 0 14px;font-size:12.5px;color:#666;">Scan the QR or pay directly using an app below</p>
+        <div style="padding:18px 22px 22px;text-align:center;">
+          <p style="margin:0 0 12px;font-size:12px;color:#777;">Scan the QR or choose an app to pay</p>
 
-          <img src="${qrImg}" alt="UPI QR" style="width:200px;height:200px;border:1px solid #eee;border-radius:12px;padding:6px;">
+          <img src="${qrImg}" alt="UPI QR" style="width:150px;height:150px;border:1px solid #eee;border-radius:10px;padding:5px;">
 
-          <p style="font-size:26px;font-weight:800;color:#8B1A1A;margin:14px 0 2px;">₹${amount}</p>
-          <p style="font-size:11.5px;color:#888;margin:0 0 18px;">UPI ID: ${UPI_ID}</p>
+          <p style="font-size:24px;font-weight:800;color:#8B1A1A;margin:12px 0 2px;">₹${amount}</p>
+          <p style="font-size:11px;color:#999;margin:0 0 16px;">UPI ID: ${UPI_ID}</p>
 
-          <div style="display:flex;gap:10px;justify-content:center;margin-bottom:18px;">
-            <button id="bbfGpayBtn" title="Google Pay" style="flex:1;padding:10px 6px;background:#fff;border:1.5px solid #eee;border-radius:12px;cursor:pointer;font-size:11px;font-weight:700;color:#333;">
-              <div style="font-size:20px;margin-bottom:3px;">🅖</div>GPay
+          <div style="border:1px solid #eee;border-radius:12px;overflow:hidden;text-align:left;margin-bottom:18px;">
+            <button id="bbfGpayBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
+              <span style="font-size:13.5px;color:#222;font-weight:600;">Google Pay</span>
+              <span style="width:26px;height:26px;border-radius:7px;background:conic-gradient(from 90deg,#4285F4 0 25%,#EA4335 25% 50%,#FBBC05 50% 75%,#34A853 75% 100%);flex-shrink:0;"></span>
             </button>
-            <button id="bbfPhonepeBtn" title="PhonePe" style="flex:1;padding:10px 6px;background:#fff;border:1.5px solid #eee;border-radius:12px;cursor:pointer;font-size:11px;font-weight:700;color:#333;">
-              <div style="font-size:20px;margin-bottom:3px;">📱</div>PhonePe
+            <button id="bbfPhonepeBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
+              <span style="font-size:13.5px;color:#222;font-weight:600;">PhonePe</span>
+              <span style="width:26px;height:26px;border-radius:50%;background:#5f259f;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">Pe</span>
             </button>
-            <button id="bbfPaytmBtn" title="Paytm" style="flex:1;padding:10px 6px;background:#fff;border:1.5px solid #eee;border-radius:12px;cursor:pointer;font-size:11px;font-weight:700;color:#333;">
-              <div style="font-size:20px;margin-bottom:3px;">💠</div>Paytm
+            <button id="bbfPaytmBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;cursor:pointer;">
+              <span style="font-size:13.5px;color:#222;font-weight:600;">Paytm</span>
+              <span style="width:26px;height:26px;border-radius:7px;background:#00baf2;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">Pay</span>
             </button>
           </div>
 
-          <button id="bbfPayDoneBtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1ebe57);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(37,211,102,.35);">
+          <button id="bbfPayDoneBtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#25D366,#1ebe57);color:#fff;border:none;border-radius:12px;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(37,211,102,.3);">
             ✅ Payment Done — Send Order on WhatsApp
           </button>
+          <p style="font-size:10px;color:#aaa;margin:12px 0 0;">🔒 Your payment is encrypted &amp; secure</p>
         </div>
       </div>
     `;
