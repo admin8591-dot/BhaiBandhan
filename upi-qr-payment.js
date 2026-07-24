@@ -6,7 +6,7 @@
 // before sending the order to WhatsApp.
 
 (function () {
-  const UPI_ID = "jitenbehera@pingpay";
+  const UPI_ID = "jitenbehera1892002-1@oksbi";
   const PAYEE_NAME = "BhaiBandhan";
   const STORE_NAME = "BhaiBandhan";
   const STORE_LOGO = "https://bhaibandhan.shop/launchericon-192x192.png"; // change if your logo path differs
