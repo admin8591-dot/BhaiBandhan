@@ -71,7 +71,7 @@
           <div style="border:1px solid #eee;border-radius:12px;overflow:hidden;text-align:left;margin-bottom:18px;">
             <button id="bbfGpayBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">Google Pay</span>
-              <img src="https://cdn.simpleicons.org/googlepay" alt="Google Pay" style="width:28px;height:28px;flex-shrink:0;">
+              <img src="https://img.icons8.com/color/96/google-pay.png" alt="Google Pay" style="width:28px;height:28px;flex-shrink:0;border-radius:7px;">
             </button>
             <button id="bbfPhonepeBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">PhonePe</span>
@@ -79,7 +79,7 @@
             </button>
             <button id="bbfPaytmBtn" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:none;cursor:pointer;">
               <span style="font-size:13.5px;color:#222;font-weight:600;">Paytm</span>
-              <img src="https://cdn.simpleicons.org/paytm/00BAF2" alt="Paytm" style="width:28px;height:28px;flex-shrink:0;">
+              <img src="https://img.icons8.com/color/96/paytm.png" alt="Paytm" style="width:28px;height:28px;flex-shrink:0;border-radius:7px;">
             </button>
           </div>
 
