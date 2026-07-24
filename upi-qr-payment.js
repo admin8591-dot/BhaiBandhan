@@ -93,13 +93,60 @@
     document.body.appendChild(wrap);
 
     document.getElementById('bbfQrClose').onclick = () => wrap.remove();
-    document.getElementById('bbfGpayBtn').onclick = () => tryOpenApp(gpayLink, genericLink);
-    document.getElementById('bbfPhonepeBtn').onclick = () => tryOpenApp(phonepeLink, genericLink);
-    document.getElementById('bbfPaytmBtn').onclick = () => tryOpenApp(paytmLink, genericLink);
+    document.getElementById('bbfGpayBtn').onclick = () => { armReturnNudge(); tryOpenApp(gpayLink, genericLink); };
+    document.getElementById('bbfPhonepeBtn').onclick = () => { armReturnNudge(); tryOpenApp(phonepeLink, genericLink); };
+    document.getElementById('bbfPaytmBtn').onclick = () => { armReturnNudge(); tryOpenApp(paytmLink, genericLink); };
     document.getElementById('bbfPayDoneBtn').onclick = function () {
       wrap.remove();
       onDone();
     };
+
+    // When the customer switches back to this tab after using an app,
+    // pulse the "Payment Done" button as a reminder to confirm.
+    // This only detects that they came back — it cannot know if the
+    // payment itself succeeded.
+    function armReturnNudge() {
+      const onReturn = () => {
+        if (document.visibilityState === 'visible') {
+          const btn = document.getElementById('bbfPayDoneBtn');
+          if (btn) {
+            btn.style.animation = 'bbfPulse 0.8s ease-in-out 3';
+            if (!document.getElementById('bbfPulseKeyframes')) {
+              const style = document.createElement('style');
+              style.id = 'bbfPulseKeyframes';
+              style.textContent = '@keyframes bbfPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}';
+              document.head.appendChild(style);
+            }
+          }
+          document.removeEventListener('visibilitychange', onReturn);
+        }
+      };
+      document.addEventListener('visibilitychange', onReturn);
+    }
+  }
+
+  function showThankYouScreen() {
+    const wrap = document.createElement('div');
+    wrap.id = 'bbfThankYouWrap';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:999999;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px;font-family:Segoe UI,Arial,sans-serif;';
+    wrap.innerHTML = `
+      <div style="text-align:center;max-width:320px;">
+        <div style="width:80px;height:80px;border-radius:50%;background:#e9f9ee;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;animation:bbfPop .4s ease;">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 style="margin:0 0 8px;color:#222;font-size:19px;font-weight:800;">Order Confirmed!</h2>
+        <p style="margin:0 0 4px;color:#666;font-size:13.5px;">Thank you for shopping with ${STORE_NAME} 🪢</p>
+        <p style="margin:0;color:#999;font-size:12.5px;">Redirecting you to WhatsApp to confirm details…</p>
+        <div style="margin-top:18px;width:26px;height:26px;border:3px solid #eee;border-top-color:#8B1A1A;border-radius:50%;animation:bbfSpin .8s linear infinite;display:inline-block;"></div>
+      </div>
+      <style>
+        @keyframes bbfPop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+        @keyframes bbfSpin{to{transform:rotate(360deg)}}
+      </style>
+    `;
+    document.body.appendChild(wrap);
   }
 
   function hookSubmitOrder() {
@@ -125,6 +172,7 @@
       const t = calcTotals();
 
       showQrModal(t.total, async function () {
+        showThankYouScreen();
         await originalSubmitOrder();
       });
     };
@@ -137,3 +185,4 @@
   }, 150);
   setTimeout(() => clearInterval(timer), 20000);
 })();
+
