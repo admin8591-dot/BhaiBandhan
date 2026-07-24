@@ -1,4 +1,4 @@
-// ===== UPI QR Payment Step — BhaiBandhan Store (WITH APP BUTTONS FIXED) =====
+// ===== UPI QR Payment — BhaiBandhan Store (QR Only - Fully Working) =====
 
 (function () {
   const UPI_ID = "jitenbehera@pingpay";
@@ -11,28 +11,7 @@
   }
 
   function buildQrImageUrl(upiLink) {
-    return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(upiLink)}`;
-  }
-
-  // Smart UPI opener — tries app, falls back to QR instruction if fails
-  function openUpiApp(amount, note, appHint) {
-    const upiLink = buildUpiLink(amount, note);
-    
-    // Try to open with UPI link (phone will choose default app)
-    window.location.href = upiLink;
-    
-    // Show a small toast/notification if app doesn't open
-    setTimeout(() => {
-      // If user is still on page, app didn't open
-      const toast = document.createElement('div');
-      toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 20px;border-radius:10px;z-index:9999999;font-size:13px;max-width:90%;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.3);';
-      toast.innerHTML = `
-        ⚠️ Couldn't open ${appHint}. Please scan the QR code above instead.
-        <button onclick="this.parentElement.remove()" style="margin-left:10px;background:#fff;border:none;border-radius:5px;padding:2px 10px;cursor:pointer;">OK</button>
-      `;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 5000);
-    }, 2000);
+    return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`;
   }
 
   function showQrModal(amount, onDone) {
@@ -42,65 +21,58 @@
 
     const wrap = document.createElement('div');
     wrap.id = 'bbfQrWrap';
-    wrap.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Segoe UI,Arial,sans-serif;backdrop-filter:blur(3px);';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Segoe UI,Arial,sans-serif;backdrop-filter:blur(4px);';
     
     wrap.innerHTML = `
-      <div style="background:#fff;border-radius:20px;max-width:380px;width:100%;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.5);position:relative;">
+      <div style="background:#ffffff;border-radius:24px;max-width:400px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;">
 
         <!-- Header -->
-        <div style="display:flex;align-items:center;gap:10px;padding:14px 44px 14px 18px;background:linear-gradient(135deg,#8B1A1A,#5e1010);">
-          <img src="${STORE_LOGO}" alt="${STORE_NAME}" style="width:38px;height:38px;border-radius:10px;object-fit:cover;flex-shrink:0;">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 48px 16px 20px;background:linear-gradient(135deg,#8B1A1A,#4a0e0e);">
+          <img src="${STORE_LOGO}" alt="${STORE_NAME}" style="width:40px;height:40px;border-radius:12px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.2);">
           <div>
-            <div style="color:#fff;font-size:15px;font-weight:800;">${STORE_NAME} Payment</div>
-            <div style="color:rgba(255,255,255,.7);font-size:11px;">🔒 Secure UPI Payment</div>
+            <div style="color:#fff;font-size:16px;font-weight:800;letter-spacing:.3px;">${STORE_NAME}</div>
+            <div style="color:rgba(255,255,255,.75);font-size:11px;">🔐 Secure UPI Payment</div>
           </div>
-          <button id="bbfQrClose" style="position:absolute;top:10px;right:10px;width:28px;height:28px;border:none;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:16px;cursor:pointer;">✕</button>
+          <button id="bbfQrClose" style="position:absolute;top:12px;right:12px;width:30px;height:30px;border:none;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:18px;cursor:pointer;transition:all .2s;">✕</button>
         </div>
 
-        <div style="padding:20px 24px 24px;text-align:center;">
+        <!-- Body -->
+        <div style="padding:24px 24px 28px;text-align:center;">
 
-          <div style="background:#f8f0f0;border-radius:12px;padding:12px;margin-bottom:16px;">
-            <p style="margin:0;font-size:14px;color:#8B1A1A;font-weight:700;">
-              💰 ₹${amount}
-            </p>
-            <p style="margin:4px 0 0;font-size:11px;color:#666;">
-              UPI: ${UPI_ID}
-            </p>
+          <!-- Amount -->
+          <div style="background:linear-gradient(135deg,#fdf2f2,#fce8e8);border-radius:14px;padding:14px;margin-bottom:20px;">
+            <p style="margin:0;font-size:13px;color:#8B1A1A;font-weight:600;">💳 Total Amount</p>
+            <p style="margin:4px 0 0;font-size:28px;font-weight:900;color:#8B1A1A;">₹${amount}</p>
           </div>
 
-          <!-- QR Code -->
-          <div style="background:#fff;border:2px solid #8B1A1A;border-radius:12px;padding:10px;display:inline-block;margin-bottom:16px;">
-            <img src="${qrImg}" alt="UPI QR Code" style="width:160px;height:160px;display:block;">
+          <!-- QR Code - BIG & CLEAR -->
+          <div style="background:#ffffff;border:3px solid #8B1A1A;border-radius:16px;padding:12px;display:inline-block;margin-bottom:18px;box-shadow:0 4px 20px rgba(139,26,26,.15);">
+            <img src="${qrImg}" alt="UPI QR Code" style="width:200px;height:200px;display:block;">
           </div>
 
-          <!-- App Buttons - FIXED VERSION -->
-          <p style="font-size:12px;color:#666;margin:0 0 10px;">👇 Pay with your favourite UPI app</p>
-          
-          <div style="display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;">
-            <button id="bbfGpayBtn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1.5px solid #ddd;border-radius:10px;cursor:pointer;font-size:12px;font-weight:600;">
-              <img src="https://img.icons8.com/color/28/google-pay.png" alt="GPay"> Google Pay
-            </button>
-            <button id="bbfPhonepeBtn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1.5px solid #ddd;border-radius:10px;cursor:pointer;font-size:12px;font-weight:600;">
-              <img src="https://cdn.simpleicons.org/phonepe/5F259F" style="width:24px;height:24px;" alt="PhonePe"> PhonePe
-            </button>
-            <button id="bbfPaytmBtn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1.5px solid #ddd;border-radius:10px;cursor:pointer;font-size:12px;font-weight:600;">
-              <img src="https://img.icons8.com/color/28/paytm.png" alt="Paytm"> Paytm
-            </button>
+          <!-- UPI ID -->
+          <p style="font-size:12px;color:#888;margin:-8px 0 16px;">
+            UPI ID: <strong style="color:#333;">${UPI_ID}</strong>
+          </p>
+
+          <!-- Instructions -->
+          <div style="background:#f0f7ff;border-radius:12px;padding:14px 16px;text-align:left;margin-bottom:18px;border:1px solid #d6e9ff;">
+            <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#1a5276;">📱 How to Pay:</p>
+            <ol style="margin:0;padding-left:22px;font-size:12.5px;color:#2c3e50;line-height:1.8;">
+              <li>Open <strong>any UPI app</strong> (GPay, PhonePe, Paytm, BHIM)</li>
+              <li>Tap <strong>"Scan QR"</strong> and scan the code above</li>
+              <li>Check amount &amp; enter your UPI PIN</li>
+              <li>Come back and click <strong>"Payment Done"</strong></li>
+            </ol>
           </div>
 
-          <div style="background:#fef9e7;border-left:3px solid #f39c12;padding:8px 12px;border-radius:6px;margin-bottom:14px;text-align:left;">
-            <p style="margin:0;font-size:11px;color:#7d6608;">
-              💡 <strong>Tip:</strong> If app doesn't open, simply scan the QR code above with any UPI app
-            </p>
-          </div>
-
-          <!-- Pay Done Button -->
-          <button id="bbfPayDoneBtn" style="width:100%;padding:14px;background:linear-gradient(135deg,#25D366,#1ebe57);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(37,211,102,.4);">
-            ✅ I've Made the Payment — Submit Order
+          <!-- Payment Done Button -->
+          <button id="bbfPayDoneBtn" style="width:100%;padding:15px;background:linear-gradient(135deg,#25D366,#1aad4f);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(37,211,102,.35);transition:transform .15s;">
+            ✅ Payment Done — Submit Order
           </button>
           
-          <p style="font-size:10px;color:#999;margin:12px 0 0;">
-            🔒 Secure • UPI Verified • 100% Safe
+          <p style="font-size:10.5px;color:#aaa;margin:14px 0 0;">
+            🔒 Encrypted • UPI Verified • Instant Confirmation
           </p>
         </div>
       </div>
@@ -108,36 +80,102 @@
     document.body.appendChild(wrap);
 
     // Close button
-    document.getElementById('bbfQrClose').onclick = () => wrap.remove();
-
-    // APP BUTTONS - FIXED: Use generic UPI link instead of app-specific
-    document.getElementById('bbfGpayBtn').onclick = function() {
-      openUpiApp(amount, note, "Google Pay");
-    };
-    
-    document.getElementById('bbfPhonepeBtn').onclick = function() {
-      openUpiApp(amount, note, "PhonePe");
-    };
-    
-    document.getElementById('bbfPaytmBtn').onclick = function() {
-      openUpiApp(amount, note, "Paytm");
+    document.getElementById('bbfQrClose').onclick = function() {
+      if (confirm('Are you sure you want to close? Payment will not be confirmed.')) {
+        wrap.remove();
+      }
     };
 
     // Payment Done button
-    document.getElementById('bbfPayDoneBtn').onclick = function () {
-      wrap.remove();
-      onDone();
+    document.getElementById('bbfPayDoneBtn').onclick = function() {
+      // Simple animation feedback
+      this.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        this.style.transform = 'scale(1)';
+        wrap.remove();
+        onDone();
+      }, 200);
+    };
+
+    // Click outside to close (only if user confirms)
+    wrap.onclick = function(e) {
+      if (e.target === wrap) {
+        if (confirm('Are you sure you want to close? Payment will not be confirmed.')) {
+          wrap.remove();
+        }
+      }
     };
   }
 
   function showThankYouScreen() {
-    // ... (same as before)
+    const wrap = document.createElement('div');
+    wrap.id = 'bbfThankYouWrap';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:999999;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px;font-family:Segoe UI,Arial,sans-serif;';
+    wrap.innerHTML = `
+      <div style="text-align:center;max-width:340px;animation:bbfFadeIn .5s ease;">
+        <div style="width:90px;height:90px;border-radius:50%;background:#e9f9ee;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;animation:bbfPop .5s ease;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="#25D366" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 style="margin:0 0 10px;color:#222;font-size:22px;font-weight:800;">🎉 Order Placed!</h2>
+        <p style="margin:0 0 6px;color:#555;font-size:14px;">Thank you for shopping with ${STORE_NAME}</p>
+        <p style="margin:0 0 16px;color:#999;font-size:13px;">Redirecting to WhatsApp for confirmation…</p>
+        <div style="width:30px;height:30px;margin:0 auto;border:3.5px solid #eee;border-top-color:#8B1A1A;border-radius:50%;animation:bbfSpin .7s linear infinite;"></div>
+      </div>
+      <style>
+        @keyframes bbfFadeIn{0%{opacity:0}100%{opacity:1}}
+        @keyframes bbfPop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+        @keyframes bbfSpin{to{transform:rotate(360deg)}}
+      </style>
+    `;
+    document.body.appendChild(wrap);
   }
 
   function hookSubmitOrder() {
-    // ... (same as before)
+    if (typeof submitOrder !== 'function') return false;
+    if (window.__bbfQrHooked) return true;
+    window.__bbfQrHooked = true;
+
+    const originalSubmitOrder = submitOrder;
+
+    submitOrder = async function () {
+      const name = document.getElementById('bn_name').value.trim();
+      const wp   = document.getElementById('bn_wp').value.trim();
+      const city = document.getElementById('bn_city').value.trim();
+      const addr = document.getElementById('bn_addr').value.trim();
+      const pin  = document.getElementById('bn_pin').value.trim();
+      const err  = document.getElementById('BNERR');
+      err.style.display = 'none';
+
+      if (!name || !wp || !city || !addr || !pin) { 
+        err.textContent = '⚠️ Please fill all fields!'; 
+        err.style.display = 'block'; 
+        return; 
+      }
+      if (wp.length !== 10 || isNaN(wp)) { 
+        err.textContent = '⚠️ Enter valid 10-digit WhatsApp number!'; 
+        err.style.display = 'block'; 
+        return; 
+      }
+      if (pin.length !== 6 || isNaN(pin)) { 
+        err.textContent = '⚠️ Enter valid 6-digit PIN code!'; 
+        err.style.display = 'block'; 
+        return; 
+      }
+
+      const t = calcTotals();
+
+      showQrModal(t.total, async function () {
+        showThankYouScreen();
+        await originalSubmitOrder();
+      });
+    };
+
+    return true;
   }
 
+  // Hook into page
   const timer = setInterval(function () {
     if (hookSubmitOrder()) clearInterval(timer);
   }, 150);
