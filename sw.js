@@ -1,4 +1,4 @@
-const CACHE_NAME = "pro-painters-v1";
+const CACHE_NAME = "bhaibandhan-v1";
 const PRECACHE_URLS = ["/", "/index.html"];
 
 self.addEventListener("install", (event) => {
@@ -22,4 +22,3 @@ self.addEventListener("fetch", (event) => {
     fetch(event.request).catch(() => caches.match(event.request))
   );
 });
-
