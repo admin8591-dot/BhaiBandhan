@@ -40,7 +40,7 @@
     @keyframes bbtb-scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
     /* bar 2: light profile bar with soft shadow */
-    .bbph-bar{background:#7A1F1F;display:flex;align-items:center;gap:12px;padding:8px 16px;
+    .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:12px;padding:6px 16px;
       font-family:'Segoe UI',Arial,sans-serif;box-shadow:0 3px 10px rgba(139,26,26,.08);
       border-bottom:1px solid #f2e4dc}
     .bbph-avatar{width:40px;height:40px;border-radius:50%;border:2px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer}
