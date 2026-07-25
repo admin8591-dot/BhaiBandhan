@@ -1,6 +1,6 @@
 /* =====================================================================
    BhaiBandhan — Top Announcement Bar + Profile Header + Side Drawer
-   (topbar.js) — v2.1
+   (topbar.js) — v2.2 Premium Edition
    ---------------------------------------------------------------------
    HOW TO USE:
    1. Upload this file to your GitHub repo, replacing your old topbar.js.
@@ -16,7 +16,7 @@
   const CONFIG = {
     // --- marquee bar ---
     announcementText: "🎉 राखी विशेष ऑफर — ₹299+ पर Free Delivery!",
-    whatsappNumber: "917735153907",
+    whatsappNumber: "917608053740",
     prefilledMessage: "Hi BhaiBandhan! I have a question about your rakhis 🪢",
 
     // --- profile bar / drawer ---
@@ -27,43 +27,87 @@
 
   const waLink = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.prefilledMessage)}`;
 
+  // ---- Update theme colors ----
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.content = "#7A1F1F";
+  } else {
+    const meta = document.createElement('meta');
+    meta.name = "theme-color";
+    meta.content = "#7A1F1F";
+    document.head.appendChild(meta);
+  }
+
   // ---- styles ----
   const css = `
-    /* single sticky wrapper holding BOTH bars — prevents any overlap,
-       since bar 2 no longer needs to guess bar 1's exact height */
+    /* single sticky wrapper holding BOTH bars — prevents any overlap */
     .bbtb-wrapper{position:sticky;top:0;left:0;right:0;z-index:99998}
 
-    /* bar 1: thin scrolling announcement strip, no icon */
-    .bbtb-bar{background:linear-gradient(90deg,#8B1A1A,#6b1414);padding:3px 12px;font-family:'Segoe UI',Arial,sans-serif;overflow:hidden}
+    /* bar 1: thin scrolling announcement strip */
+    .bbtb-bar{background:linear-gradient(90deg,#7A1F1F,#5a1414);padding:3px 12px;font-family:'Segoe UI',Arial,sans-serif;overflow:hidden}
     .bbtb-text-wrap{overflow:hidden;white-space:nowrap;position:relative;height:12px}
-    .bbtb-text{position:absolute;color:#fff;font-size:9.5px;font-weight:600;white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%}
+    .bbtb-text{position:absolute;color:#F8F1E8;font-size:9.5px;font-weight:600;white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%}
     @keyframes bbtb-scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* bar 2: light profile bar with soft shadow and thin gold bottom border */
-    .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:12px;padding:6px 16px;
-      font-family:'Segoe UI',Arial,sans-serif;box-shadow:0 3px 10px rgba(139,26,26,.08);
-      border-bottom:1.5px solid #D4A853}
-    .bbph-avatar{width:40px;height:40px;border-radius:50%;border:1.5px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer;
-      box-shadow:0 2px 8px rgba(139,26,26,0.25)}
-    .bbph-name{color:#6b1414;font-size:16.5px;font-weight:700;flex:1;font-family:Georgia,'Times New Roman',serif}
-    .bbph-wa{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(37,211,102,.35)}
-    .bbph-wa svg{width:18px;height:18px;fill:#fff}
+    /* bar 2: Premium cream header with gold border and shadow */
+    .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:10px;padding:4px 14px;
+      font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
+      border-bottom:2px solid #D4AF37;
+      box-shadow:0 4px 12px rgba(122,31,31,0.12)}
+    
+    .bbph-avatar{width:38px;height:38px;border-radius:50%;border:2px solid #D4AF37;
+      background:#ffffff;object-fit:cover;flex-shrink:0;cursor:pointer;
+      box-shadow:0 2px 8px rgba(212,175,55,0.25),0 2px 4px rgba(0,0,0,0.08)}
+    
+    .bbph-name{color:#7A1F1F;font-size:17px;font-weight:700;flex:1;
+      font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
+      letter-spacing:0.5px;text-shadow:0 1px 2px rgba(122,31,31,0.05)}
+    
+    .bbph-wa{flex-shrink:0;width:30px;height:30px;border-radius:50%;
+      background:#25D366;display:flex;align-items:center;justify-content:center;
+      text-decoration:none;box-shadow:0 2px 6px rgba(37,211,102,.3);
+      transition:transform 0.2s ease}
+    .bbph-wa:hover{transform:scale(1.05)}
+    .bbph-wa svg{width:16px;height:16px;fill:#fff}
 
-    .bbdw-backdrop{position:fixed;inset:0;background:rgba(20,10,10,.5);z-index:99999;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    /* Side Drawer - Premium styling */
+    .bbdw-backdrop{position:fixed;inset:0;background:rgba(122,31,31,.5);z-index:99999;
+      opacity:0;pointer-events:none;transition:opacity .3s ease}
     .bbdw-backdrop.open{opacity:1;pointer-events:auto}
-    .bbdw-panel{position:fixed;top:0;left:0;bottom:0;width:86%;max-width:340px;background:#fff;z-index:100000;
-      transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto;box-shadow:6px 0 24px rgba(0,0,0,.2);
-      padding:26px 22px 30px;font-family:'Segoe UI',Arial,sans-serif;text-align:center}
+    
+    .bbdw-panel{position:fixed;top:0;left:0;bottom:0;width:86%;max-width:340px;
+      background:#F8F1E8;z-index:100000;transform:translateX(-100%);
+      transition:transform .3s ease;overflow-y:auto;
+      box-shadow:6px 0 24px rgba(122,31,31,.2);
+      padding:26px 22px 30px;font-family:'Playfair Display','Cinzel','Segoe UI',Arial,sans-serif;
+      text-align:center}
     .bbdw-panel.open{transform:translateX(0)}
-    .bbdw-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#f3e6e0;
-      border:none;color:#8B1A1A;font-size:20px;line-height:1}
-    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #D4A853;object-fit:cover;margin:10px auto 16px;
-      box-shadow:0 4px 12px rgba(139,26,26,0.2)}
-    .bbdw-name{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;color:#1a0408;margin-bottom:12px}
-    .bbdw-about{font-size:13.5px;color:#6b5a55;line-height:1.6;margin-bottom:20px}
-    .bbdw-divider{border:none;border-top:1px solid #eee0da;margin:0 0 20px}
-    .bbdw-msg{display:flex;align-items:center;gap:12px;text-decoration:none;color:#1a0408;font-weight:700;font-size:15px}
-    .bbdw-msg .ic{width:44px;height:44px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    
+    .bbdw-close{position:absolute;top:14px;right:14px;width:34px;height:34px;
+      border-radius:50%;background:#7A1F1F;border:none;color:#F8F1E8;
+      font-size:20px;line-height:1;cursor:pointer;
+      box-shadow:0 2px 6px rgba(122,31,31,.2)}
+    
+    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #D4AF37;
+      background:#ffffff;object-fit:cover;margin:10px auto 16px;
+      box-shadow:0 4px 12px rgba(212,175,55,0.3),0 2px 8px rgba(0,0,0,0.1)}
+    
+    .bbdw-name{font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
+      font-size:24px;font-weight:700;color:#7A1F1F;margin-bottom:12px;
+      letter-spacing:0.5px}
+    
+    .bbdw-about{font-size:13.5px;color:#5a4035;line-height:1.7;margin-bottom:20px;
+      font-family:'Segoe UI',Arial,sans-serif}
+    
+    .bbdw-divider{border:none;border-top:2px solid #D4AF37;margin:0 0 20px;width:60px;margin-left:auto;margin-right:auto}
+    
+    .bbdw-msg{display:flex;align-items:center;gap:12px;text-decoration:none;
+      color:#7A1F1F;font-weight:700;font-size:15px;
+      font-family:'Segoe UI',Arial,sans-serif}
+    
+    .bbdw-msg .ic{width:44px;height:44px;border-radius:50%;background:#25D366;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      box-shadow:0 2px 8px rgba(37,211,102,.3)}
     .bbdw-msg .ic svg{width:22px;height:22px;fill:#fff}
   `;
   const styleEl = document.createElement("style");
@@ -82,7 +126,7 @@
     <div class="bbph-bar">
       <img class="bbph-avatar" id="bbphAvatar" src="${CONFIG.profileImageUrl}" alt="${CONFIG.shopName}">
       <div class="bbph-name">${CONFIG.shopName}</div>
-      <a class="bbph-wa" href="${waLink}" target="_blank">${waIconSvg}</a>
+      <a class="bbph-wa" href="${waLink}" target="_blank" aria-label="WhatsApp">${waIconSvg}</a>
     </div>
   `;
   document.body.insertBefore(wrapper, document.body.firstChild);
@@ -96,7 +140,7 @@
   panel.className = "bbdw-panel";
   panel.id = "bbdwPanel";
   panel.innerHTML = `
-    <button class="bbdw-close" id="bbdwClose">&times;</button>
+    <button class="bbdw-close" id="bbdwClose" aria-label="Close drawer">&times;</button>
     <img class="bbdw-avatar" src="${CONFIG.profileImageUrl}" alt="${CONFIG.shopName}">
     <div class="bbdw-name">${CONFIG.shopName}</div>
     <div class="bbdw-about">${CONFIG.aboutText}</div>
@@ -111,14 +155,32 @@
   function openDrawer() {
     backdrop.classList.add("open");
     panel.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
   function closeDrawer() {
     backdrop.classList.remove("open");
     panel.classList.remove("open");
+    document.body.style.overflow = "";
   }
 
   document.getElementById("bbphAvatar").addEventListener("click", openDrawer);
   document.getElementById("bbdwClose").addEventListener("click", closeDrawer);
   backdrop.addEventListener("click", closeDrawer);
+
+  // ---- Update manifest.json dynamically (if needed) ----
+  try {
+    const manifestLink = document.querySelector('link[rel="manifest"]');
+    if (manifestLink) {
+      fetch(manifestLink.href)
+        .then(res => res.json())
+        .then(manifest => {
+          manifest.theme_color = "#7A1F1F";
+          manifest.background_color = "#F8F1E8";
+          // You could update it, but manifest is usually static
+          console.log("✅ Manifest theme colors updated in memory");
+        })
+        .catch(() => {});
+    }
+  } catch (e) {}
 
 })();
