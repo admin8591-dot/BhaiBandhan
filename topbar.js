@@ -39,10 +39,10 @@
     .bbtb-text{position:absolute;color:#fff;font-size:9.5px;font-weight:600;white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%}
     @keyframes bbtb-scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* bar 2: light profile bar with DEEP SHADOW below the gold border */
+    /* bar 2: light profile bar with MEDIUM shadow below gold border */
     .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:12px;padding:6px 16px;
       font-family:'Segoe UI',Arial,sans-serif;
-      box-shadow:0 12px 40px 10px rgba(139,26,26,0.6);
+      box-shadow:0 8px 20px 4px rgba(139,26,26,0.35);
       border-bottom:1.5px solid #D4A853}
     .bbph-avatar{width:40px;height:40px;border-radius:50%;border:1.5px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer;
       box-shadow:0 2px 8px rgba(139,26,26,0.25)}
