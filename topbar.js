@@ -44,7 +44,7 @@
       font-family:'Segoe UI',Arial,sans-serif;box-shadow:0 3px 10px rgba(139,26,26,.08);
       border-bottom:1.5px solid #D4A853}
     .bbph-avatar{width:40px;height:40px;border-radius:50%;border:1.5px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer;
-      box-shadow:0 2px 8px rgba(139,26,26,0.25)}
+      box-shadow:0 6px 16px rgba(139,26,26,0.4)}
     .bbph-name{color:#6b1414;font-size:16.5px;font-weight:700;flex:1;font-family:Georgia,'Times New Roman',serif}
     .bbph-wa{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(37,211,102,.35)}
     .bbph-wa svg{width:18px;height:18px;fill:#fff}
