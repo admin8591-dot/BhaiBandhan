@@ -1,7 +1,13 @@
+/* ============================================================
+   PWA SETUP — BhaiBandhan Rakhi Store
+   Injects manifest link, theme color, apple-touch-icon, and
+   registers the service worker. Points to your ACTUAL icon
+   filenames already in the repo.
+   ============================================================ */
 (function () {
   const CONFIG = {
     themeColor: "#B5592F",
-    iconUrl: "/icon-512.png"
+    iconUrl: "/launchericon-512x512.png"
   };
 
   const manifestLink = document.createElement("link");
@@ -25,4 +31,3 @@
     });
   }
 })();
-
