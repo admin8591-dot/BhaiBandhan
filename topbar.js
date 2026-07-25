@@ -16,7 +16,7 @@
   const CONFIG = {
     // --- marquee bar ---
     announcementText: "🎉 राखी विशेष ऑफर — ₹299+ पर Free Delivery!",
-    whatsappNumber: "917608053740",
+    whatsappNumber: "917735153907",
     prefilledMessage: "Hi BhaiBandhan! I have a question about your rakhis 🪢",
 
     // --- profile bar / drawer ---
