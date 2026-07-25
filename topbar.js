@@ -42,7 +42,7 @@
     /* bar 2: light profile bar with soft shadow and thin gold bottom border */
     .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:12px;padding:6px 16px;
       font-family:'Segoe UI',Arial,sans-serif;box-shadow:0 3px 10px rgba(139,26,26,.08);
-      border-bottom:1.5px solid #D4A853}
+      border-bottom:1.5px solid #8B1A1A}
     .bbph-avatar{width:40px;height:40px;border-radius:50%;border:1.5px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer;
       box-shadow:0 2px 8px rgba(139,26,26,0.25)}
     .bbph-name{color:#6b1414;font-size:16.5px;font-weight:700;flex:1;font-family:Georgia,'Times New Roman',serif}
