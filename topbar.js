@@ -1,6 +1,6 @@
 /* =====================================================================
    BhaiBandhan — Top Announcement Bar + Profile Header + Side Drawer
-   (topbar.js) — v2.3 Premium Edition
+   (topbar.js) — v2.3 Premium Dual Theme
    ---------------------------------------------------------------------
    HOW TO USE:
    1. Upload this file to your GitHub repo, replacing your old topbar.js.
@@ -43,82 +43,88 @@
     /* single sticky wrapper holding BOTH bars */
     .bbtb-wrapper{position:sticky;top:0;left:0;right:0;z-index:99998}
 
-    /* bar 1: Maroon gradient offer strip */
-    .bbtb-bar{background:linear-gradient(90deg,#7A1F1F,#8E2A2A);padding:3px 12px;font-family:'Segoe UI',Arial,sans-serif;overflow:hidden}
+    /* bar 1: LIGHT THEME - Warm cream with subtle shadow */
+    .bbtb-bar{background:#F8F1E8;padding:3px 12px;font-family:'Segoe UI',Arial,sans-serif;
+      overflow:hidden;border-bottom:1.5px solid #D4AF37;
+      box-shadow:0 2px 8px rgba(212,175,55,0.15)}
     .bbtb-text-wrap{overflow:hidden;white-space:nowrap;position:relative;height:12px}
-    .bbtb-text{position:absolute;color:#FFFFFF;font-size:9.5px;font-weight:700;white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%;letter-spacing:0.3px}
+    .bbtb-text{position:absolute;color:#7A1F1F;font-size:9.5px;font-weight:700;
+      white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%;
+      letter-spacing:0.3px}
     @keyframes bbtb-scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* bar 2: Premium cream header with left-to-right gradient, gold border, shadow */
-    .bbph-bar{background:linear-gradient(90deg,#F8F1E8,#FFFBF5);display:flex;align-items:center;gap:12px;padding:8px 16px;
+    /* bar 2: DARK THEME - Deep maroon with premium gold accents */
+    .bbph-bar{background:linear-gradient(135deg,#7A1F1F,#5a1414);
+      display:flex;align-items:center;gap:10px;padding:5px 14px;
       font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
-      border-bottom:1px solid #D4AF37;
-      box-shadow:0 3px 12px rgba(122,31,31,0.10)}
+      border-bottom:2.5px solid #D4AF37;
+      box-shadow:0 4px 16px rgba(122,31,31,0.35),inset 0 1px 0 rgba(212,175,55,0.1)}
     
-    /* Logo - larger 56-60px with white background, gold border, shadow */
-    .bbph-avatar{width:58px;height:58px;border-radius:50%;border:2px solid #D4AF37;
+    /* Logo - White background, gold border, shadow on dark bg */
+    .bbph-avatar{width:38px;height:38px;border-radius:50%;border:2.5px solid #D4AF37;
       background:#ffffff;object-fit:cover;flex-shrink:0;cursor:pointer;
-      box-shadow:0 3px 12px rgba(212,175,55,0.25),0 2px 6px rgba(0,0,0,0.06)}
-    
-    /* Brand name - deep maroon, premium font, bold, letter spacing */
-    .bbph-name{color:#7A1F1F;font-size:18px;font-weight:700;flex:1;
-      font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
-      letter-spacing:0.5px;text-shadow:0 1px 2px rgba(122,31,31,0.04)}
-    
-    /* WhatsApp icon - slightly smaller with soft shadow */
-    .bbph-wa{flex-shrink:0;width:54px;height:54px;border-radius:50%;
-      background:#25D366;display:flex;align-items:center;justify-content:center;
-      text-decoration:none;box-shadow:0 3px 10px rgba(37,211,102,.25);
+      box-shadow:0 0 0 1px rgba(212,175,55,0.3),0 3px 12px rgba(0,0,0,0.3);
       transition:transform 0.2s ease}
-    .bbph-wa:hover{transform:scale(1.05)}
-    .bbph-wa svg{width:26px;height:26px;fill:#fff}
+    .bbph-avatar:hover{transform:scale(1.05)}
+    
+    /* Shop name in gold/cream on dark background */
+    .bbph-name{color:#F8F1E8;font-size:17px;font-weight:700;flex:1;
+      font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
+      letter-spacing:0.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+    
+    /* WhatsApp on dark theme - Gold accent ring */
+    .bbph-wa{flex-shrink:0;width:30px;height:30px;border-radius:50%;
+      background:#25D366;display:flex;align-items:center;justify-content:center;
+      text-decoration:none;box-shadow:0 0 0 2px #D4AF37,0 3px 10px rgba(0,0,0,0.3);
+      transition:all 0.2s ease}
+    .bbph-wa:hover{transform:scale(1.08);box-shadow:0 0 0 3px #D4AF37,0 4px 14px rgba(0,0,0,0.4)}
+    .bbph-wa svg{width:16px;height:16px;fill:#fff}
 
-    /* Side Drawer - Premium styling */
-    .bbdw-backdrop{position:fixed;inset:0;background:rgba(122,31,31,.5);z-index:99999;
+    /* Side Drawer - Premium dark theme matching */
+    .bbdw-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99999;
       opacity:0;pointer-events:none;transition:opacity .3s ease}
     .bbdw-backdrop.open{opacity:1;pointer-events:auto}
     
     .bbdw-panel{position:fixed;top:0;left:0;bottom:0;width:86%;max-width:340px;
-      background:#F8F1E8;z-index:100000;transform:translateX(-100%);
-      transition:transform .3s ease;overflow-y:auto;
-      box-shadow:6px 0 24px rgba(122,31,31,.2);
+      background:linear-gradient(180deg,#7A1F1F,#4a1212);z-index:100000;
+      transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto;
+      box-shadow:6px 0 30px rgba(0,0,0,0.5);
       padding:26px 22px 30px;font-family:'Playfair Display','Cinzel','Segoe UI',Arial,sans-serif;
-      text-align:center}
+      text-align:center;border-right:2px solid #D4AF37}
     .bbdw-panel.open{transform:translateX(0)}
     
     .bbdw-close{position:absolute;top:14px;right:14px;width:34px;height:34px;
-      border-radius:50%;background:#7A1F1F;border:none;color:#F8F1E8;
-      font-size:20px;line-height:1;cursor:pointer;
-      box-shadow:0 2px 6px rgba(122,31,31,.2)}
+      border-radius:50%;background:#D4AF37;border:2px solid #F8F1E8;
+      color:#7A1F1F;font-size:20px;line-height:1;cursor:pointer;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);transition:transform 0.2s ease}
+    .bbdw-close:hover{transform:rotate(90deg)}
     
-    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #D4AF37;
+    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3.5px solid #D4AF37;
       background:#ffffff;object-fit:cover;margin:10px auto 16px;
-      box-shadow:0 4px 12px rgba(212,175,55,0.3),0 2px 8px rgba(0,0,0,0.1)}
+      box-shadow:0 0 0 2px rgba(212,175,55,0.3),0 6px 20px rgba(0,0,0,0.4)}
     
     .bbdw-name{font-family:'Playfair Display','Cinzel',Georgia,'Times New Roman',serif;
-      font-size:24px;font-weight:700;color:#7A1F1F;margin-bottom:12px;
-      letter-spacing:0.5px}
+      font-size:24px;font-weight:700;color:#F8F1E8;margin-bottom:12px;
+      letter-spacing:0.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
     
-    .bbdw-about{font-size:13.5px;color:#5a4035;line-height:1.7;margin-bottom:20px;
-      font-family:'Segoe UI',Arial,sans-serif}
+    .bbdw-about{font-size:13.5px;color:#e8ddd0;line-height:1.7;margin-bottom:20px;
+      font-family:'Segoe UI',Arial,sans-serif;opacity:0.9}
     
-    .bbdw-divider{border:none;border-top:2px solid #D4AF37;margin:0 0 20px;width:60px;margin-left:auto;margin-right:auto}
+    .bbdw-divider{border:none;border-top:2px solid #D4AF37;margin:0 0 20px;
+      width:60px;margin-left:auto;margin-right:auto;opacity:0.8}
     
     .bbdw-msg{display:flex;align-items:center;gap:12px;text-decoration:none;
-      color:#7A1F1F;font-weight:700;font-size:15px;
-      font-family:'Segoe UI',Arial,sans-serif}
+      color:#F8F1E8;font-weight:700;font-size:15px;
+      font-family:'Segoe UI',Arial,sans-serif;
+      padding:10px 16px;border-radius:12px;
+      background:rgba(255,255,255,0.05);border:1.5px solid rgba(212,175,55,0.3);
+      transition:all 0.2s ease}
+    .bbdw-msg:hover{background:rgba(212,175,55,0.1);border-color:#D4AF37}
     
     .bbdw-msg .ic{width:44px;height:44px;border-radius:50%;background:#25D366;
       display:flex;align-items:center;justify-content:center;flex-shrink:0;
-      box-shadow:0 2px 8px rgba(37,211,102,.3)}
+      box-shadow:0 2px 10px rgba(37,211,102,0.3)}
     .bbdw-msg .ic svg{width:22px;height:22px;fill:#fff}
-
-    /* ---- Orange floating cart button override ---- */
-    .bb-cart-btn{background:linear-gradient(135deg,#8B1E1E,#6D1515) !important;
-      box-shadow:0 4px 16px rgba(139,30,30,0.4) !important;
-      border:none !important}
-    .bb-cart-btn svg{color:#FFFFFF !important;fill:#FFFFFF !important}
-    .bb-cart-btn:hover{transform:scale(1.08) !important;box-shadow:0 6px 20px rgba(139,30,30,0.5) !important}
   `;
   const styleEl = document.createElement("style");
   styleEl.textContent = css;
@@ -177,27 +183,7 @@
   document.getElementById("bbdwClose").addEventListener("click", closeDrawer);
   backdrop.addEventListener("click", closeDrawer);
 
-  // ---- Override floating cart button (if exists) ----
-  function styleCartButton() {
-    const cartBtn = document.querySelector('.bb-cart-btn, [class*="cart"][class*="float"], button[aria-label*="cart"]');
-    if (cartBtn && !cartBtn.dataset.styled) {
-      cartBtn.dataset.styled = "true";
-      cartBtn.style.background = "linear-gradient(135deg, #8B1E1E, #6D1515)";
-      cartBtn.style.boxShadow = "0 4px 16px rgba(139,30,30,0.4)";
-      cartBtn.style.border = "none";
-      const svg = cartBtn.querySelector('svg');
-      if (svg) {
-        svg.style.color = "#FFFFFF";
-        svg.style.fill = "#FFFFFF";
-      }
-    }
-  }
-  // Run immediately and after a short delay for dynamic loading
-  styleCartButton();
-  setTimeout(styleCartButton, 500);
-  setTimeout(styleCartButton, 1500);
-
-  // ---- Update manifest.json ----
+  // ---- Update manifest.json dynamically (if needed) ----
   try {
     const manifestLink = document.querySelector('link[rel="manifest"]');
     if (manifestLink) {
@@ -206,7 +192,7 @@
         .then(manifest => {
           manifest.theme_color = "#7A1F1F";
           manifest.background_color = "#F8F1E8";
-          console.log("✅ Manifest theme colors updated");
+          console.log("✅ Manifest theme colors updated in memory");
         })
         .catch(() => {});
     }
