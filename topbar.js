@@ -58,16 +58,7 @@
     .bbdw-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#f3e6e0;
       border:none;color:#8B1A1A;font-size:20px;line-height:1}
     .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #D4A853;object-fit:cover;margin:10px auto 16px;
-     
-     .bbph-bar {
-  background: #F8F1E8;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 6px 16px;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  box-shadow: 0 8px 24px 4px rgba(139,26,26,0.45);
-  border-bottom: 1.5px solid #D44853;
+     box-shadow:0 12px 35px 8px rgba(139,26,26,0.6)
 }
    
     .bbdw-name{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;color:#1a0408;margin-bottom:12px}
