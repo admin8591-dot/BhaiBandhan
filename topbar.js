@@ -1,6 +1,6 @@
 /* =====================================================================
    BhaiBandhan — Top Announcement Bar + Profile Header + Side Drawer
-   (topbar.js) — v2
+   (topbar.js) — v2.1
    ---------------------------------------------------------------------
    HOW TO USE:
    1. Upload this file to your GitHub repo, replacing your old topbar.js.
@@ -39,11 +39,12 @@
     .bbtb-text{position:absolute;color:#fff;font-size:9.5px;font-weight:600;white-space:nowrap;animation:bbtb-scroll 17s linear infinite;padding-left:100%}
     @keyframes bbtb-scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* bar 2: light profile bar with soft shadow */
+    /* bar 2: light profile bar with soft shadow and thin gold bottom border */
     .bbph-bar{background:#F8F1E8;display:flex;align-items:center;gap:12px;padding:6px 16px;
       font-family:'Segoe UI',Arial,sans-serif;box-shadow:0 3px 10px rgba(139,26,26,.08);
-      border-bottom:1px solid #f2e4dc}
-    .bbph-avatar{width:40px;height:40px;border-radius:50%;border:2px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer}
+      border-bottom:1.5px solid #D4A853}
+    .bbph-avatar{width:40px;height:40px;border-radius:50%;border:1.5px solid #8B1A1A;object-fit:cover;flex-shrink:0;cursor:pointer;
+      box-shadow:0 2px 8px rgba(139,26,26,0.25)}
     .bbph-name{color:#6b1414;font-size:16.5px;font-weight:700;flex:1;font-family:Georgia,'Times New Roman',serif}
     .bbph-wa{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(37,211,102,.35)}
     .bbph-wa svg{width:18px;height:18px;fill:#fff}
@@ -56,7 +57,8 @@
     .bbdw-panel.open{transform:translateX(0)}
     .bbdw-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#f3e6e0;
       border:none;color:#8B1A1A;font-size:20px;line-height:1}
-    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #8B1A1A;object-fit:cover;margin:10px auto 16px}
+    .bbdw-avatar{width:96px;height:96px;border-radius:50%;border:3px solid #D4A853;object-fit:cover;margin:10px auto 16px;
+      box-shadow:0 4px 12px rgba(139,26,26,0.2)}
     .bbdw-name{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;color:#1a0408;margin-bottom:12px}
     .bbdw-about{font-size:13.5px;color:#6b5a55;line-height:1.6;margin-bottom:20px}
     .bbdw-divider{border:none;border-top:1px solid #eee0da;margin:0 0 20px}
@@ -120,4 +122,3 @@
   backdrop.addEventListener("click", closeDrawer);
 
 })();
-
