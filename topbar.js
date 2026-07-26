@@ -15,7 +15,7 @@
 
   const CONFIG = {
     // --- marquee bar ---
-    announcementText: "🎉 राखी विशेष ऑफर — ₹299+ पर Free Delivery!",
+    announcementText: "📦 Pan India Shipping Available – Only ₹69 Delivery Charge Per Order",
     whatsappNumber: "917608053740",
     prefilledMessage: "Hi BhaiBandhan! I have a question about your rakhis 🪢",
 
