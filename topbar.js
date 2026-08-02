@@ -15,7 +15,7 @@
 
   const CONFIG = {
     // --- marquee bar ---
-    announcementText: "📦 Pan India Shipping Available – Only ₹69 Delivery Charge Per Order",
+    announcementText: "📦 Pan India Shipping Available – Only ₹50 Delivery Charge Per Order",
     whatsappNumber: "917735153907",
     prefilledMessage: "Hi BhaiBandhan! I have a question about your rakhis 🪢",
 
